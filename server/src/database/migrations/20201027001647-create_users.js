@@ -9,17 +9,21 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
 
-    return await queryInterface.createTable('users', { 
-      id: { 
-        type: Sequelize.INTEGER, 
-        autoIncrement: true, 
-        primaryKey: true
+    return await queryInterface.createTable('users', {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
       },
+      name: Sequelize.STRING,
       email: {
-          type: Sequelize.STRING, unique: true, allowNull: false
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
       },
       password: {
-          type: Sequelize.STRING, allowNull: false
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -28,18 +32,17 @@ module.exports = {
       updated_at: {
         type: Sequelize.DATE,
         allowNull: false,
-      }
+      },
     });
-   
 
-  down: async (queryInterface, Sequelize) => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
-    return await queryInterface.dropTable('users');
-  }
-}
+    down: async (queryInterface, Sequelize) => {
+      /**
+       * Add reverting commands here.
+       *
+       * Example:
+       * await queryInterface.dropTable('users');
+       */
+      return await queryInterface.dropTable('users');
+    };
+  },
 };
